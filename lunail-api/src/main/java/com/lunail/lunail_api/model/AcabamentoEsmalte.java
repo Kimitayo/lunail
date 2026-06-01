@@ -7,5 +7,8 @@ public enum AcabamentoEsmalte {
     SOLAR,
     GLITTER,
     HOLOGRAFICO,
-    MAGNETICO
+    MAGNETICO,
+    JELLY,
+    PEROLADO,
+    FOSCO
 }
