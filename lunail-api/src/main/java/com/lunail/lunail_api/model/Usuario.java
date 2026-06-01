@@ -1,13 +1,25 @@
 package com.lunail.lunail_api.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
+@Entity
+@Table(name = "usuarios")
 public class Usuario {
+    @Id
     private String id;
+    @Column(nullable = false)
     private String nomeCompleto;
+    @Column(nullable = false,  unique = true) // true pq não pode ter 2 registros com o mesmo email
     private String email;
+    @Column(nullable = false)
     private String senha;
+    @Column(nullable = false)
     private LocalDate dataCadastro;
 
 
