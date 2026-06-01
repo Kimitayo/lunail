@@ -12,12 +12,13 @@ import java.util.UUID;
 @Table(name = "usuarios")
 public class Usuario {
     @Id
+    @Column(length = 36)
     private String id;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String nomeCompleto;
-    @Column(nullable = false,  unique = true) // true pq não pode ter 2 registros com o mesmo email
+    @Column(nullable = false,  unique = true, length = 100) // true pq não pode ter 2 registros com o mesmo email
     private String email;
-    @Column(nullable = false)
+    @Column(nullable = false,   length = 255)
     private String senha;
     @Column(nullable = false)
     private LocalDate dataCadastro;
@@ -64,4 +65,8 @@ public class Usuario {
         this.senha = senha;
         this.dataCadastro = LocalDate.now();
     }
+
+    // construtor pro banco de dados não travar. assim o JPA cria o objeto vazio, busca os dados no banco e depois preenche campo por campo usando os setters
+    protected Usuario() {} // vai ser protected pra só o JPA usar esse construtor
+
 }

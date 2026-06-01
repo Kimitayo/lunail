@@ -8,22 +8,17 @@ public class Esmalte {
     private String fotoPath;
     private String id;
     private String nome;
-    private String marca;
+    private Marca marca;
     private double preco;
     private LocalDate dataAquisicao;
-    private CorPrincipal corPrincipal;
-    private TipoEsmalte tipoEsmalte;
-    private AcabamentoEsmalte acabamentoEsmalte;
+    private Cor corPrincipal;
+    private Acabamento acabamentoEsmalte;
     private NivelEsmalte nivelEsmalte;
     private String usuarioId; // pra separar os esmaltes de cada usuario
-    private float nota;
-    private String descricaoAvaliacao;
-    private int vezesUsado;
-    private ArrayList<LocalDate> registrosAnteriores;
     private boolean favorito; // coração roxo favoritos
 
     // construtor
-    public Esmalte(String nome, String marca, double preco, LocalDate dataAquisicao, CorPrincipal corPrincipal, TipoEsmalte tipoEsmalte, AcabamentoEsmalte acabamentoEsmalte, NivelEsmalte nivelEsmalte, String  usuarioId) {
+    public Esmalte(String nome, Marca marca, double preco, LocalDate dataAquisicao, Cor corPrincipal, Acabamento acabamentoEsmalte, NivelEsmalte nivelEsmalte, String  usuarioId) {
         this.fotoPath = null;
         this.id = UUID.randomUUID().toString();
         this.nome = nome;
@@ -31,14 +26,9 @@ public class Esmalte {
         this.preco = preco;
         this.dataAquisicao = dataAquisicao;
         this.corPrincipal = corPrincipal;
-        this.tipoEsmalte = tipoEsmalte;
         this.acabamentoEsmalte = acabamentoEsmalte;
         this.nivelEsmalte = nivelEsmalte;
         this.usuarioId = usuarioId; // vai pegar depois o id do usuario
-        this.nota = 0;
-        this.descricaoAvaliacao = null;
-        this.vezesUsado = 0;
-        this.registrosAnteriores = new ArrayList<>();
         this.favorito = false;
     }
 
@@ -60,11 +50,11 @@ public class Esmalte {
         this.nome = nome;
     }
 
-    public String getMarca() {
+    public Marca getMarca() {
         return marca;
     }
 
-    public void setMarca(String marca) {
+    public void setMarca(Marca marca) {
         this.marca = marca;
     }
 
@@ -84,27 +74,19 @@ public class Esmalte {
         this.dataAquisicao = dataAquisicao;
     }
 
-    public CorPrincipal getCorPrincipal() {
+    public Cor getCorPrincipal() {
         return corPrincipal;
     }
 
-    public void setCorPrincipal(CorPrincipal corPrincipal) {
+    public void setCorPrincipal(Cor corPrincipal) {
         this.corPrincipal = corPrincipal;
     }
 
-    public TipoEsmalte getTipoEsmalte() {
-        return tipoEsmalte;
-    }
-
-    public void setTipoEsmalte(TipoEsmalte tipoEsmalte) {
-        this.tipoEsmalte = tipoEsmalte;
-    }
-
-    public AcabamentoEsmalte getAcabamentoEsmalte() {
+    public Acabamento getAcabamentoEsmalte() {
         return acabamentoEsmalte;
     }
 
-    public void setAcabamentoEsmalte(AcabamentoEsmalte acabamentoEsmalte) {
+    public void setAcabamentoEsmalte(Acabamento acabamentoEsmalte) {
         this.acabamentoEsmalte = acabamentoEsmalte;
     }
 
@@ -114,22 +96,6 @@ public class Esmalte {
 
     public void setNivelEsmalte(NivelEsmalte nivelEsmalte) {
         this.nivelEsmalte = nivelEsmalte;
-    }
-
-    public float getNota() {
-        return nota;
-    }
-
-    public void setNota(float nota) {
-        this.nota = nota;
-    }
-
-    public String getDescricaoAvaliacao() {
-        return descricaoAvaliacao;
-    }
-
-    public void setDescricaoAvaliacao(String descricaoAvaliacao) {
-        this.descricaoAvaliacao = descricaoAvaliacao;
     }
 
     public boolean isFavorito() {
@@ -149,11 +115,4 @@ public class Esmalte {
         return usuarioId;
     }
 
-    public int getVezesUsado() {
-        return vezesUsado;
-    }
-
-    public ArrayList<LocalDate> getRegistrosAnteriores() {
-        return registrosAnteriores;
-    }
 }
