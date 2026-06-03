@@ -10,7 +10,7 @@ public class Esmalte {
     private String nome;
     private Marca marca;
     private double preco;
-    private LocalDate dataAquisicao;
+    private LocalDate dataAquisicao;2
     private Cor corPrincipal;
     private Acabamento acabamentoEsmalte;
     private NivelEsmalte nivelEsmalte;
