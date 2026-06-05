@@ -1,5 +1,6 @@
 package com.lunail.lunail_api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -18,6 +19,7 @@ public class Usuario {
     private String nomeCompleto;
     @Column(nullable = false,  unique = true, length = 100) // true pq não pode ter 2 registros com o mesmo email
     private String email;
+    @JsonIgnore // pra não aparecer a senha no json
     @Column(nullable = false,   length = 255)
     private String senha;
     @Column(nullable = false)

@@ -2,6 +2,7 @@ package com.lunail.lunail_api.service;
 
 import com.lunail.lunail_api.model.Usuario;
 import com.lunail.lunail_api.repository.UsuarioRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -11,6 +12,8 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository; // no service conecto ao repository
 
     // construtor
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); // pra criptografar a senha antes de salvar
+
     public UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
@@ -33,7 +36,7 @@ public class UsuarioService {
         if (optional.isPresent()) {
             throw new RuntimeException("Este e-mail já existe");
         } else {
-            Usuario novoUsuario = new Usuario(nomeCompleto, email, senha);
+            Usuario novoUsuario = new Usuario(nomeCompleto, email, encoder.encode(senha));
             return usuarioRepository.save(novoUsuario); // salva no banco de dados e retorna
         }
     }
@@ -51,7 +54,7 @@ public class UsuarioService {
             throw new RuntimeException("Email ou senha incorretos");
         } else {
             Usuario usuario = optional.get(); // se tem algo, pega o que tem dentro
-            if (!senha.equals(usuario.getSenha())) { // senha diferente do getSenha()
+            if (!encoder.matches(senha, usuario.getSenha())) { // senha diferente do getSenha()
                 throw new RuntimeException("Email ou senha incorretos");
             } else {
                 return usuario;
