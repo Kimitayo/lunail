@@ -19,7 +19,7 @@ public class Esmalte {
     @ManyToOne
     @JoinColumn(name = "marca_id",  nullable = false)
     private Marca marca;
-    @Column(nullable = false)
+    @Column()
     private BigDecimal preco;
     @Column(nullable = false)
     private LocalDate dataAquisicao;
@@ -39,12 +39,12 @@ public class Esmalte {
     private boolean favorito; // coração roxo favoritos
 
     // construtor
-    public Esmalte(String nome, Marca marca, BigDecimal preco, LocalDate dataAquisicao, Cor corPrincipal, Acabamento acabamentoEsmalte, NivelEsmalte nivelEsmalte, Usuario  usuario) {
+    public Esmalte(String nome, Marca marca, LocalDate dataAquisicao, Cor corPrincipal, Acabamento acabamentoEsmalte, NivelEsmalte nivelEsmalte, Usuario  usuario) {
         this.fotoPath = null;
         this.id = UUID.randomUUID().toString();
         this.nome = nome;
         this.marca = marca;
-        this.preco = preco;
+        this.preco = null;
         this.dataAquisicao = dataAquisicao;
         this.corPrincipal = corPrincipal;
         this.acabamentoEsmalte = acabamentoEsmalte;

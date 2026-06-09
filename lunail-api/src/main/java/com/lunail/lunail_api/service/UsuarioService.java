@@ -25,7 +25,6 @@ public class UsuarioService {
         // 2. se existe -> lança erro
         // 3. se não existe, aceita email, compara as senhas -> cria e salva
         // 4. guarda data de cadastro
-
         // verificar senhas
         if (!senha.equals(confirmarSenha)) {
             throw new RuntimeException("As senhas não coincidem");
